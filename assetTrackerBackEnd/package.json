@@ -1,0 +1,27 @@
+{
+  "name": "assettracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "truffle-migrate": "truffle migrate --network development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "ethereum-input-data-decoder": "^0.2.1",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "web3": "^1.2.4"
+  }
+}
