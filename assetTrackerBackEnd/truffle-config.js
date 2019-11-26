@@ -1,5 +1,10 @@
 //const HDWalletProvider = require('');
 ///const MNEMONIC = 'knock place surface beauty barrel average chat electric project collect movie cook';
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const mnemonic = "about urban vacuum knee height history voyage large range heavy crumble digital";
+
+const ropstenUrl = "https://ropsten.infura.io/v3/a4bc2e3f44644e80a4a2fb0ef525d32e";
+
 
 module.exports = {
 
@@ -8,14 +13,12 @@ module.exports = {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 7545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
+    },
+    ropsten: {
+      provider: new HDWalletProvider(mnemonic, ropstenUrl),
+      network_id: 3
     }
-    // ropsten: {
-    //   provider: function() {
-    //     return new HDWalletProvider(MNEMONIC, "ropsten.infura.io/v3/a4bc2e3f44644e80a4a2fb0ef525d32e")
-    //   },
-    //   network_id: 3,
-    //   gas: 4000000      //make sure this gas allocation isn't over 4M, which is the max
-    // }
+    
   },
 
   mocha: {

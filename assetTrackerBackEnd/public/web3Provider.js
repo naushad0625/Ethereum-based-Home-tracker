@@ -23,7 +23,9 @@ class Web3Provider {
                 .getEthereumUrl()
                 .then(url => {
                     this.etheriumUrl = url;
-                    this.web3 = new Web3(new Web3.providers.HttpProvider(this.etheriumUrl));
+                    //this.web3 = new Web3(new Web3.providers.HttpProvider(this.etheriumUrl));
+                    this.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/a4bc2e3f44644e80a4a2fb0ef525d32e"));
+                    console.log(this.web3);
                     return this.findUserAccount()
                 })
                 .then(user_account => {
