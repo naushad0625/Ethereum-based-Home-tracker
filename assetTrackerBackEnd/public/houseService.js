@@ -134,12 +134,12 @@ class HouseService {
             let finalData = [];
             let value = this.web3.utils.hexToAscii(tx_input);
             value = value.replace(/\0/g, '/');
-            
-            let arr  = value.split('/');
+
+            let arr = value.split('/');
             arr[0] = arr[0].split(',')[1];
-            
+
             arr.forEach(element => {
-                if(element != '') {
+                if (element != '') {
                     finalData.push(element);
                 }
             });

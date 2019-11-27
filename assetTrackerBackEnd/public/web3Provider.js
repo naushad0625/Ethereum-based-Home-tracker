@@ -23,9 +23,7 @@ class Web3Provider {
                 .getEthereumUrl()
                 .then(url => {
                     this.etheriumUrl = url;
-                    //this.web3 = new Web3(new Web3.providers.HttpProvider(this.etheriumUrl));
-                    this.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/a4bc2e3f44644e80a4a2fb0ef525d32e"));
-                    console.log(this.web3);
+                    this.web3 = new Web3(new Web3.providers.HttpProvider(this.etheriumUrl));
                     return this.findUserAccount()
                 })
                 .then(user_account => {
@@ -38,7 +36,7 @@ class Web3Provider {
                 })
                 .then(home_contract => {
                     this.homeContract = home_contract;
-                   resolve('Contract Created')
+                    resolve('Contract Created')
                 })
                 .catch(err => {
                     console.log(err);
@@ -81,7 +79,7 @@ class Web3Provider {
                 data: contractsData
             });
 
-            if(homeContract) {
+            if (homeContract) {
                 resolve(homeContract);
             }
             reject('Could not create contract');
