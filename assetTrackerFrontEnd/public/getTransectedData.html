@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asset Tracker</title>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./vendors/DataTables/datatables.min.css">
+    <link rel="stylesheet" href="./vendors/bootstrap-4.2.1-dist/css/bootstrap.min.css">
+</head>
+
+<body class="body">
+
+
+    <nav class="navbar navbar-light w-100" style="background-color: #e3f2fd;">
+        <a class="navbar-brand mx-auto" href="https://ethereum.org/">
+            <img src="./images/ethereum.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Ethereum based house tracker
+        </a>
+    </nav>
+
+    <div class="container container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card mx-auto">
+                <div class="card">
+                    <div class="card-body">
+
+                        <nav id="navigation_bar" class="navbar navbar-expand-lg navbar-light bg-light">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./createHouse.html">Create House</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./ownersInfo.html">View Owner's Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./transactionInfo.html">View Transaction Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="./getTransectedData.html">Get Transected Data</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./changeOwnership.html">Change Ownership</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="h4 text-center pb-5">
+                            Get Transaction Data
+                        </div>
+
+                        <form class="pb-5">
+                            <div class="form-group">
+                                <label for="house_tx_hash">House Transaction Input</label>
+                                <input type="text" class="form-control" id="house_tx_hash"
+                                    placeholder="Input form house transaction hash">
+                            </div>
+
+                            <button type="submit" id="submit_house_tx_hash" class="btn btn-primary"
+                                data-toggle="collapse" data-target="#output_house_tx_hash">Get Transacted Data</button>
+
+                            <div id="output_house_tx_hash" class="form-group pt-5 collapse">
+                                <label for="data_house_tx_hash">Transacted Data</label>
+                                <textarea class="form-control" id="data_house_tx_hash" rows="5"></textarea>
+                            </div>
+
+                        </form>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="ownership_tx_hash">Ownership Transaction Input</label>
+                                <input type="text" class="form-control" id="ownership_tx_hash"
+                                    placeholder="Input form ownership transaction hash">
+                            </div>
+
+                            <button type="submit" id="submit_ownership_tx_hash" class="btn btn-primary"
+                                data-toggle="collapse" data-target="#output_ownership_tx_hash">Get Transacted
+                                Data</button>
+
+                            <div id="output_ownership_tx_hash" class="form-group pt-5 collapse">
+                                <label for="data_ownership_tx_hash">Transacted Data</label>
+                                <textarea class="form-control" id="data_ownership_tx_hash" rows="5"></textarea>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://www.leads.com.bd/"> LEADS Corporation Limited </a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+
+
+
+    <!-- Plugins -->
+    <script src="./vendors/jquery/jquery-3.4.1.min.js"></script>
+    <script src="./vendors/DataTables/datatables.min.js"></script>
+    <script src="./vendors/bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
+    <!-- end plugins -->
+
+    <!-- Script -->
+    <script src="./js/getTransactedData.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>

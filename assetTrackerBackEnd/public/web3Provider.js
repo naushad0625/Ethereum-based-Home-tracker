@@ -1,6 +1,7 @@
 const Web3 = require('web3');
 const EthereumNetworkConfig = require('./config.js');
 const HomeArtifect = require('../build/contracts/House.json');
+const OwnershipManagementArtifect = require('../build/contracts/OwnershipManagement.json');
 
 class Web3Provider {
 
@@ -8,9 +9,9 @@ class Web3Provider {
         this.ethereumNetworkConfig = new EthereumNetworkConfig();
 
         this.setUp = this.setUp.bind(this);
-        this.getHomeArtifectNetworkAddress = this.getHomeArtifectNetworkAddress.bind(this);
+        this.getArtifectNetworkAddress = this.getArtifectNetworkAddress.bind(this);
         this.createContractObject = this.createContractObject.bind(this);
-        this.getHoemContract = this.getHoemContract.bind(this);
+        this.getHomeContract = this.getHomeContract.bind(this);
         this.getUserAccount = this.getUserAccount.bind(this);
         this.findUserAccount = this.findUserAccount.bind(this);
 
@@ -28,18 +29,27 @@ class Web3Provider {
                 })
                 .then(user_account => {
                     this.userAccount = user_account;
-                    return this.getHomeArtifectNetworkAddress();
+                    let promises = [];
+                    promises.push(this.getArtifectNetworkAddress(HomeArtifect));
+                    promises.push(this.getArtifectNetworkAddress(OwnershipManagementArtifect));
+                    return Promise.all(promises);
                 })
-                .then(currentNetworkAddress => {
-                    this.homeContractNetAddress = currentNetworkAddress;
-                    return this.createContractObject();
+                .then(artifectNetworkAddresses => {
+                    let contractPromises = [];
+                    this.homeContractNetAddress = artifectNetworkAddresses[0];
+                    this.ownershipContractNetAddress = artifectNetworkAddresses[1];
+                    contractPromises.push(this.createContractObject(HomeArtifect, this.homeContractNetAddress));
+                    contractPromises.push(this.createContractObject(OwnershipManagementArtifect, this.ownershipContractNetAddress));
+                    return Promise.all(contractPromises);
                 })
-                .then(home_contract => {
-                    this.homeContract = home_contract;
-                    resolve('Contract Created')
+                .then(contracts => {
+                    this.homeContract = contracts[0];
+                    this.ownershipContract = contracts[1];
+
+                    resolve('Contracts are Created')
                 })
                 .catch(err => {
-                    console.log(err);
+                    reject(err);
                 });
         })
     }
@@ -59,11 +69,11 @@ class Web3Provider {
         })
     }
 
-    getHomeArtifectNetworkAddress() {
+    getArtifectNetworkAddress(artifect) {
         return new Promise((resolve, reject) => {
-            let allNetKeys = Object.keys(HomeArtifect.networks);
+            let allNetKeys = Object.keys(artifect.networks);
             let currentNetKey = allNetKeys[allNetKeys.length - 1];
-            let currentNetworkAddress = HomeArtifect.networks[currentNetKey].address;
+            let currentNetworkAddress = artifect.networks[currentNetKey].address;
 
             if (currentNetworkAddress)
                 resolve(currentNetworkAddress);
@@ -71,23 +81,27 @@ class Web3Provider {
         })
     }
 
-    createContractObject() {
+    createContractObject(artifect, net_address) {
         return new Promise((resolve, reject) => {
-            const jsonInterface = HomeArtifect.abi;
-            const contractsData = HomeArtifect.bytecode;
-            let homeContract = new this.web3.eth.Contract(jsonInterface, this.homeContractNetAddress, {
+            const jsonInterface = artifect.abi;
+            const contractsData = artifect.bytecode;
+            let contract = new this.web3.eth.Contract(jsonInterface, net_address, {
                 data: contractsData
             });
 
-            if (homeContract) {
-                resolve(homeContract);
+            if (contract) {
+                resolve(contract);
             }
             reject('Could not create contract');
         })
     }
 
-    getHoemContract() {
+    getHomeContract() {
         return this.homeContract;
+    }
+
+    getOwnershipContract() {
+        return this.ownershipContract;
     }
 
     getUserAccount() {

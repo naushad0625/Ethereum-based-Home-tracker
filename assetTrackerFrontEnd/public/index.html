@@ -22,7 +22,6 @@
         </a>
     </nav>
 
-
     <div class="container container-fluid">
 
         <div class="row">
@@ -30,62 +29,29 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <div class="h4 text-center">
-                            Add new House
-                        </div>
-                        <form class="p-5" id="form">
+                        <nav id="navigation_bar" class="navbar navbar-expand-lg navbar-light bg-light">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="./index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./createHouse.html">Create House</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./ownersInfo.html">View Owner's Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./transactionInfo.html">View Transaction Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./getTransectedData.html">Get Transected Data</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./changeOwnership.html">Change Ownership</a>
+                                </li>
+                            </ul>
+                        </nav>
 
-                            <div class="form-group">
-                                <label for="house_name">House Name</label>
-                                <input type="text" class="form-control" id="house_name" placeholder="House name">
-                            </div>
-                            <div class="form-group">
-                                <label for="house_woner">Woner's Name</label>
-                                <input type="text" class="form-control" id="house_woner" placeholder="Woner's Name">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="house_address">Address</label>
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label for="house_no">House No.</label>
-                                        <input type="text" class="form-control" id="house_no"
-                                            placeholder="House Number">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="street">Street</label>
-                                        <select id="street" class="form-control">
-                                            <option>--Select Street--</option>
-                                            <option value="Kazi Nazrul Islam Avenue">Kazi Nazrul Islam Avenue</option>
-                                            <option value="Topkhana Road">Topkhana Road</option>
-                                            <option value="Kalibari Road">Kalibari Road</option>
-                                            <option value="College Road">College Road</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="city">City</label>
-                                        <select id="city" class="form-control">
-                                            <option>--Select City--</option>
-                                            <option value="Dhaka">Dhaka</option>
-                                            <option value="Mymensingh">Mymensingh</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <button type="submit" id="submit" class="btn btn-primary">Add House</button>
-                            <button type="cancel" id="cancel" class="btn btn-secondary">Cancel</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card mx-auto">
-                <div class="card">
-                    <div class="card-body">
                         <div class="h4 text-center pb-5">
                             House Information
                         </div>
@@ -98,7 +64,8 @@
                                         <th scope="col">Owner's name</th>
                                         <th scope="col">House Address</th>
                                         <th scope="col">Transaction Hash</th>
-
+                                        <th scope="col">Owner's Address</th>
+                                        <th scope="col">Ownership Transaction Hash</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,162 +77,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card mx-auto">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="h4 text-center pb-5">
-                            View Transaction Information
-                        </div>
-
-                        <form>
-                            <div class="form-group">
-                                <label for="tx_search_input">Transaction Hash</label>
-                                <input type="text" class="form-control" id="tx_search_input"
-                                    placeholder="Transaction Hash">
-                            </div>
-
-                            <button type="submit" id="tx_search" class="btn btn-primary" data-toggle="collapse"
-                                data-target="#tx_search_output">Get Info</button>
-
-                            <div id="tx_search_output" class="form-group pt-5 collapse">
-                                <label>Transaction Information</label>
-                                <form>
-                                    <div class="form-group row">
-                                        <label for="hash" class="col-sm-2 col-form-label">hash</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="hash" placeholder="hash">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="nonce" class="col-sm-2 col-form-label">nonce</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="nonce" placeholder="nonce">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="blockHash" class="col-sm-2 col-form-label">blockHash</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="blockHash"
-                                                placeholder="blockHash">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="blockNumber" class="col-sm-2 col-form-label">blockNumber</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="blockNumber"
-                                                placeholder="blockNumber">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="transactionIndex"
-                                            class="col-sm-2 col-form-label">transactionIndex</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="transactionIndex"
-                                                placeholder="transactionIndex">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="from" class="col-sm-2 col-form-label">from</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="from" placeholder="from">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="to" class="col-sm-2 col-form-label">to</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="to" placeholder="to">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="value" class="col-sm-2 col-form-label">value</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="value" placeholder="value">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="gas" class="col-sm-2 col-form-label">gas</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="gas" placeholder="gas">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="gasPrice" class="col-sm-2 col-form-label">gasPrice</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="gasPrice"
-                                                placeholder="gasPrice">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="input" class="col-sm-2 col-form-label">input</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="input" placeholder="input">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="v" class="col-sm-2 col-form-label">v</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="v" placeholder="v">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="r" class="col-sm-2 col-form-label">r</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="r" placeholder="r">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="s" class="col-sm-2 col-form-label">s</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="s" placeholder="s">
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-
-
-
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card mx-auto">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="h4 text-center pb-5">
-                            Get Transaction Data
-                        </div>
-
-                        <form>
-                            <div class="form-group">
-                                <label for="tx_input">Transaction Input</label>
-                                <input type="text" class="form-control" id="tx_input"
-                                    placeholder="Input form transaction object">
-                            </div>
-
-                            <button type="submit" id="tx_input_submit" class="btn btn-primary" data-toggle="collapse"
-                                data-target="#tx_input_decoded">Get Transacted Data</button>
-
-                            <div id="tx_input_decoded" class="form-group pt-5 collapse">
-                                <label for="tx_data_text_area">Transacted Data</label>
-                                <textarea class="form-control" id="tx_data_text_area" rows="5"></textarea>
-                            </div>
-
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
     </div>
 
     <!-- Footer -->
@@ -290,7 +101,7 @@
     <!-- end plugins -->
 
     <!-- Script -->
-    <script src="./index.js"></script>
+    <script src="./js/index.js"></script>
     <!-- End Script -->
 </body>
 
