@@ -29,9 +29,6 @@ $(document).ready(function () {
                     $('#gas').val(response[8]);
                     $('#gasPrice').val(response[9]);
                     $('#input').val(response[10]);
-                    $('#v').val(response[11]);
-                    $('#r').val(response[12]);
-                    $('#s').val(response[13]);
                 }
             });
         }
